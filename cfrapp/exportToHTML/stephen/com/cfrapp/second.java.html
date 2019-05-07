@@ -1,0 +1,108 @@
+<html>
+<head>
+<title>second.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { color: rgb(0,0,0); }
+.s2 { color: rgb(0,128,0); font-weight: bold; }
+.s3 { color: rgb(128,128,128); font-style: italic; }
+.s4 { color: rgb(0,0,255); }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+second.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">package </span><span class="s1">stephen.com.cfrapp; 
+ 
+</span><span class="s0">import </span><span class="s1">android.content.Intent; 
+</span><span class="s0">import </span><span class="s1">android.os.CountDownTimer; 
+</span><span class="s0">import </span><span class="s1">android.support.v7.app.AppCompatActivity; 
+</span><span class="s0">import </span><span class="s1">android.os.Bundle; 
+</span><span class="s0">import </span><span class="s1">android.view.View; 
+</span><span class="s0">import </span><span class="s1">android.widget.ImageButton; 
+</span><span class="s0">import </span><span class="s1">android.widget.TextView; 
+</span><span class="s0">import </span><span class="s1">java.util.Random; 
+ 
+</span><span class="s0">public class </span><span class="s1">second </span><span class="s0">extends </span><span class="s1">AppCompatActivity { 
+ 
+    @Override 
+    </span><span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) { 
+        </span><span class="s0">super</span><span class="s1">.onCreate(savedInstanceState); 
+        setContentView(R.layout.activity_second); 
+ 
+        ImageButton button; 
+        </span><span class="s0">final </span><span class="s1">TextView text1; 
+        </span><span class="s0">final </span><span class="s1">ImageButton pick_activity; 
+        </span><span class="s0">final </span><span class="s1">TextView activitytext; 
+        ImageButton back_button; 
+ 
+        button = (ImageButton) findViewById(R.id.start); 
+        text1 = (TextView) findViewById(R.id.label); 
+        activitytext = (TextView) findViewById(R.id.newact); 
+ 
+        pick_activity = (ImageButton) findViewById(R.id.pick); 
+ 
+        back_button = (ImageButton) findViewById(R.id.backbutton); 
+ 
+        </span><span class="s0">assert </span><span class="s1">back_button != </span><span class="s0">null</span><span class="s1">; 
+        back_button.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() { 
+            @Override 
+            </span><span class="s0">public void </span><span class="s1">onClick(View v) { 
+                Intent toy = </span><span class="s0">new </span><span class="s1">Intent(second.</span><span class="s0">this</span><span class="s1">, first.</span><span class="s0">class</span><span class="s1">); 
+                startActivity(toy); 
+ 
+            } 
+        }); 
+ 
+        </span><span class="s0">final </span><span class="s1">String[] listofoptions = </span><span class="s0">new </span><span class="s1">String[]{</span><span class="s2">&quot;Smile&quot;</span><span class="s1">,</span><span class="s2">&quot;Laugh&quot;</span><span class="s1">,</span><span class="s2">&quot;Giggle&quot;</span><span class="s1">, </span><span class="s2">&quot;Compliment yourself&quot;</span><span class="s1">}; 
+ 
+        </span><span class="s0">assert </span><span class="s1">pick_activity != </span><span class="s0">null</span><span class="s1">; 
+        pick_activity.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() { 
+            @Override 
+            </span><span class="s0">public void </span><span class="s1">onClick(View v) { 
+                </span><span class="s0">if </span><span class="s1">(activitytext != </span><span class="s0">null</span><span class="s1">) { 
+                    Random rand = </span><span class="s0">new </span><span class="s1">Random(); 
+                    </span><span class="s3">// int randomNum = rand.nextInt((max - min) + 1) + min;</span><span class="s1"> 
+                    </span><span class="s0">int </span><span class="s1">rand_num = rand.nextInt((</span><span class="s4">3</span><span class="s1">) + </span><span class="s4">1</span><span class="s1">); 
+                    activitytext.setText(listofoptions[rand_num]); 
+ 
+                } 
+            } 
+        }); 
+ 
+        </span><span class="s0">if </span><span class="s1">(button != </span><span class="s0">null</span><span class="s1">) { 
+            button.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() { 
+ 
+                @Override 
+                </span><span class="s0">public void </span><span class="s1">onClick(View v) { 
+ 
+                    </span><span class="s0">new </span><span class="s1">CountDownTimer(</span><span class="s4">10000</span><span class="s1">, </span><span class="s4">100</span><span class="s1">) { 
+                        </span><span class="s0">public void </span><span class="s1">onTick(</span><span class="s0">long </span><span class="s1">millisUntilFinished) { 
+                            </span><span class="s0">if </span><span class="s1">(text1 != </span><span class="s0">null</span><span class="s1">) { 
+                                text1.setText(String.valueOf(millisUntilFinished / </span><span class="s4">1000</span><span class="s1">)); 
+ 
+                            } 
+                        } 
+ 
+                        </span><span class="s0">public void </span><span class="s1">onFinish() { 
+                            </span><span class="s0">if </span><span class="s1">(text1 != </span><span class="s0">null</span><span class="s1">) { 
+                                String string = getString(R.string.ten); 
+                                text1.setText(string); 
+                            } 
+                        } 
+                    }.start(); 
+                } 
+            }); 
+        } 
+    } 
+ 
+} 
+</span></pre>
+</body>
+</html>
